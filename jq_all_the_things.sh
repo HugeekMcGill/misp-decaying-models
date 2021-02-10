@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#Validate all Jsons first
-for dir in `find . -name "*.json"`
+
+#Validate all Jsons first with maximum depth of 2. Caused problem with docker -i
+for dir in `find . -maxdepth 2 -name "*.json"`
 do
   echo validating ${dir}
   # python3 -c "import json; f_in = open('${dir}'); data = json.load(f_in); f_in.close(); f_out = open('${dir}', 'w'); json.dump(data, f_out, indent=2, sort_keys=True, ensure_ascii=False); f_out.close();"
